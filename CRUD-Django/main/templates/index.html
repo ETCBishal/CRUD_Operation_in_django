@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+
+<div class="container text-white text-center my-3 sm-5">
+    <h3>'CRUD' Operation in Django</h3>
+    
+    <!-- Add Button for adding the students to the table -->
+
+    <a href="addStudents/" class = "btn btn-success float-end mb-2">Add</a>
+    
+    <!-- Table of students -->
+    <div class="Students-Table my-5">
+    <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">SNO</th>
+            <th scope="col">Name</th>
+            <th scope="col">Roll</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        {% for student in students %}
+        <tbody>
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{student.name}}</td>
+            <td>{{student.roll}}</td>
+            <td>{{student.grade}}</td>
+            <td><a class="btn btn-primary btn-sm" href="edit/{{student.id}}">Edit</a>
+              <a style="margin-left:3px;" class="btn btn-danger btn-sm" href="/delete/{{student.id}}">Delete</a></td>
+            
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+      
+      
+    </div>
+       
+    
+</div>
+{% endblock body %}
